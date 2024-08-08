@@ -26,13 +26,13 @@ export const ExpenseForm = ({
       ,
       { number: /^[0-9]\d*(\.\d+)?$/, message: "Enter valid Number" },
     ],
-    email: [
-      { required: true, message: "please enter email" },
-      {
-        pattern: /^[a-z0-9._%+-]+@gmail\.com$/,
-        message: "please enter a valid email",
-      },
-    ],
+    // email: [
+    //   { required: true, message: "please enter email" },
+    //   {
+    //     pattern: /^[a-z0-9._%+-]+@gmail\.com$/,
+    //     message: "please enter a valid email",
+    //   },
+    // ],
   };
   const validate = (form) => {
     Object.entries(form).forEach(([key, value]) => {
@@ -45,10 +45,10 @@ export const ExpenseForm = ({
           errorData[key] = rule.message;
           return true;
         }
-        if (rule.pattern && !rule.pattern.test(value)) {
-          errorData[key] = rule.message;
-          return true;
-        }
+        // if (rule.pattern && !rule.pattern.test(value)) {
+        //   errorData[key] = rule.message;
+        //   return true;
+        // }
           if(rule.number && !rule.number.test(value)){
               errorData[key] = rule.message
               return true
@@ -145,14 +145,14 @@ export const ExpenseForm = ({
         error={errors.amount}
       
       />
-      <Input
+      {/* <Input
         label="Email"
         id={"email"}
         name="email"
         value={expense.email}
         onChange={handleChange}
         error={errors.email}
-      />
+      /> */}
 
       <button className="add-btn">{editingRowId ? "Save" : "Add"}</button>
     </form>
